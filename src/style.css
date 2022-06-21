@@ -14,10 +14,27 @@ body {
 h1 {
   font-size: 34px;
   font-weight: 500;
+  margin-bottom: 0;
 }
 
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  line-height: 1.2;
+}
+
+.weather-info {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+img {
+  width: 50;
+  margin-right: 10px;
+}
+
+.weather-detail {
+  font-size: 14px;
+  text-align: left;
 }
