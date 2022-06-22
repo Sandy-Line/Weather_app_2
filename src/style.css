@@ -5,7 +5,7 @@ body {
 
 .wrap-the-app {
   max-width: 600px;
-  margin: 30px auto;
+  margin: 30px auto 2px auto;
   border: 1px solid #dadde1;
   border-radius: 10px;
   padding: 25px;
@@ -24,9 +24,17 @@ ul {
   line-height: 1.2;
 }
 
+li {
+  font-size: 14px;
+}
+
+.weather-app-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .weather-info {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 12px;
 }
 
 img {
@@ -35,6 +43,8 @@ img {
 }
 
 .weather-detail {
-  font-size: 14px;
   text-align: left;
+}
+small {
+  font-size: small;
 }
