@@ -28,20 +28,21 @@
           <h1>Seoul</h1>
           <ul>
             <li>Tuesday 19:13</li>
-            <li>Clear</li>
+            <li id="weather-description">Clear</li>
           </ul>
           <div class="row weather-info">
             <div class="col-8 clearfix">
               <img src="medias/sun.png" alt="sun" class="float-left" />
               <div class="float-left">
-                <strong>28</strong><span class="unit">°C | °F</span>
+                <strong id="temperature">28</strong
+                ><span class="unit">°C | °F</span>
               </div>
             </div>
             <div class="col-4 weather-detail">
               <ul>
-                <li>Precipitation: 0%</li>
-                <li>Humidity: 62%</li>
-                <li>Wind: 10km/h</li>
+                <li>Precipitation: <span id="precipitation">0</span>%</li>
+                <li>Humidity: <span id="humidity">62</span>%</li>
+                <li>Wind: <span id="wind">10</span>km/h</li>
               </ul>
             </div>
           </div>
