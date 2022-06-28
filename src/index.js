@@ -1,18 +1,15 @@
 function displayTemp(response) {
   console.log(response.data);
-
+  let city = document.querySelector("h1");
+  city.innerHTML = response.data.name;
   let description = document.querySelector("#weather-description");
   description.innerHTML = response.data.weather["0"].main;
-
   let temp = document.querySelector("#temperature");
   temp.innerHTML = Math.round(response.data.main.temp);
-
-  //let precipitation = document.querySelector("#precipitation");
+  // let precipitation = document.querySelector("#precipitation");
   //precipitation.innerHTML = Math.floor(response.data.rain["1h"]);
-
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = Math.round(response.data.main.humidity);
-
   let wind = document.querySelector("#wind");
   wind.innerHTML = Math.round(response.data.wind.speed);
 }
