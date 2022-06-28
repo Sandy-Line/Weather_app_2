@@ -22,7 +22,6 @@ function formatDate(timestamp) {
 }
 
 function displayTemp(response) {
-  console.log(response.data);
   let city = document.querySelector("h1");
   city.innerHTML = response.data.name;
   let date = document.querySelector("#date");
