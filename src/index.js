@@ -93,6 +93,8 @@ function searchValue(event) {
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temperature");
+  let fahrenheitIcon = document.querySelector("#fahrenheit");
+  fahrenheitIcon.style.textDecoration = "underline";
   let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
   temperature.innerHTML = fahrenheitTemperature;
 }
@@ -102,6 +104,8 @@ function convertBackToCelsius(event) {
   event.preventDefault();
   let degreeCelsius = document.querySelector("#temperature");
   degreeCelsius.innerHTML = Math.ceil(celsiusTemperature);
+  let fahrenheitIcon = document.querySelector("#fahrenheit");
+  fahrenheitIcon.style.textDecoration = "none";
 }
 
 let celsiusTemperature = null;

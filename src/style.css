@@ -42,13 +42,6 @@ img {
   margin-right: 15px;
 }
 
-.weather-detail {
-  text-align: left;
-}
-small {
-  font-size: small;
-}
-
 .float-left {
   float: left;
 }
@@ -58,7 +51,20 @@ small {
   font-weight: 500;
   line-height: 1;
 }
+
 .unit {
   position: relative;
   top: -30px;
+}
+.degree {
+  text-decoration: none;
+  color: #878787;
+}
+
+.weather-detail {
+  text-align: left;
+}
+
+small {
+  font-size: small;
 }
