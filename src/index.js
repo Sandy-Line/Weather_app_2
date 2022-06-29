@@ -1,3 +1,4 @@
+// This function formats the date and the hour
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let days = [
@@ -21,6 +22,7 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+//This function change the weather image from the medias folder
 function displayImage(iconUrl) {
   if (iconUrl === `http://openweathermap.org/img/wn/01d@2x.png`) {
     document.getElementById("image").src = "medias/sun.png";
@@ -46,6 +48,7 @@ function displayImage(iconUrl) {
   }
 }
 
+//This fonction get the API reponse and dispatches it on HTML
 function displayTemp(response) {
   console.log(response);
   let city = document.querySelector("h1");
@@ -68,14 +71,20 @@ function displayTemp(response) {
   displayImage(iconUrl);
 }
 
-let apiKey = "59ebc73950183d72b027190e832e1b5b";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=${apiKey}&units=metric`;
+// This function receive the value (city) and make the api call
+function search(city) {
+  let apiKey = "59ebc73950183d72b027190e832e1b5b";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(displayTemp);
+  axios.get(apiUrl).then(displayTemp);
+}
 
-function search(event) {
+// This function takes the value (city) of the input when Search button is click
+function searchValue(event) {
   event.preventDefault();
+  let city = document.querySelector("#form-input");
+  searchValue(city);
 }
 
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
+form.addEventListener("submit", searchValue);
