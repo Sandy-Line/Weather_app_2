@@ -59,6 +59,9 @@ function displayTemp(response) {
   description.innerHTML = response.data.weather["0"].main;
   let temp = document.querySelector("#temperature");
   temp.innerHTML = Math.ceil(response.data.main.temp);
+
+  celsiusTemperature = response.data.main.temp;
+
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = Math.round(response.data.main.humidity);
   let wind = document.querySelector("#wind");
@@ -86,7 +89,30 @@ function searchValue(event) {
   search(city.value);
 }
 
+// This function convert to Farhenheit
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  temperature.innerHTML = fahrenheitTemperature;
+}
+
+//This function convert back to Celsius
+function convertBackToCelsius(event) {
+  event.preventDefault();
+  let degreeCelsius = document.querySelector("#temperature");
+  degreeCelsius.innerHTML = Math.ceil(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchValue);
 
-let farhenheit = document.querySelector("#farhenheit");
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", displayFahrenheitTemperature);
+
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", convertBackToCelsius);
+
+search("Paris");
