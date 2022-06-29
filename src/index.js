@@ -74,7 +74,7 @@ function displayTemp(response) {
 // This function receive the value (city) and make the api call
 function search(city) {
   let apiKey = "59ebc73950183d72b027190e832e1b5b";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayTemp);
 }
@@ -83,7 +83,7 @@ function search(city) {
 function searchValue(event) {
   event.preventDefault();
   let city = document.querySelector("#form-input");
-  searchValue(city);
+  search(city.value);
 }
 
 let form = document.querySelector("#search-form");
