@@ -89,7 +89,7 @@ function searchValue(event) {
   search(city.value);
 }
 
-// This function convert to Farhenheit
+// This function convert to Farhenheit and underline the °F
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temperature");
