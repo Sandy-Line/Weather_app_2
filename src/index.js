@@ -88,3 +88,5 @@ function searchValue(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchValue);
+
+let farhenheit = document.querySelector("#farhenheit");
