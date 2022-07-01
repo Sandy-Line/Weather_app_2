@@ -72,6 +72,7 @@ li {
 .forecast-date {
   font-size: 16px;
   color: #32343a;
+  opacity: 0.8;
   font-weight: 500;
 }
 
