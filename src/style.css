@@ -37,7 +37,7 @@ li {
   margin-top: 20px;
 }
 
-img {
+.img-weather-info {
   width: 60px;
   margin-right: 15px;
 }
@@ -63,6 +63,29 @@ img {
 
 .weather-detail {
   text-align: left;
+}
+
+.weather-forcast {
+  text-align: center;
+}
+
+.forecast-date {
+  font-size: 16px;
+  color: #32343a;
+  font-weight: 500;
+}
+
+.img-forecast {
+  width: 40px;
+}
+
+.max-temp {
+  font-size: 13px;
+  color: #202124;
+}
+.min-temp {
+  font-size: 13px;
+  color: #70757a;
 }
 
 small {
