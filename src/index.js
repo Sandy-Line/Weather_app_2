@@ -48,6 +48,30 @@ function displayImage(iconUrl) {
   }
 }
 
+//This function display the forecast COLUMNS
+function displayForecastColumns() {
+  let weatherForecast = document.querySelector("#weather-forecast");
+  let forecastColumns = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastColumns =
+      forecastColumns +
+      `
+              <div class="col-2 forecast-column">
+                <div class="forecast-date">${day}</div>
+                <img src="medias/rainy.png" alt="" class="img-forecast" />
+                <div class="forecast-temp">
+                  <span class="max-temp">18°</span>
+                  <span class="min-temp">22°</span>
+                </div>
+              </div>
+            `;
+  });
+
+  forecastColumns = forecastColumns + `</div>`;
+  weatherForecast.innerHTML = forecastColumns;
+}
+
 //This fonction get the API reponse and dispatches it on HTML
 function displayTemp(response) {
   console.log(response);
@@ -120,3 +144,4 @@ let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", convertBackToCelsius);
 
 search("Paris");
+displayForecastColumns();
