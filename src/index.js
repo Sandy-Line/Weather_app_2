@@ -50,20 +50,19 @@ function displayImage(iconUrl) {
 
 //This function display the forecast COLUMNS
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecastDays = response.data.daily;
   let weatherForecast = document.querySelector("#weather-forecast");
   let forecastColumns = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
+  forecastDays.forEach(function (forecastDay) {
     forecastColumns =
       forecastColumns +
       `
               <div class="col-2 forecast-column">
-                <div class="forecast-date">${day}</div>
+                <div class="forecast-date">${forecastDay.dt}</div>
                 <img src="medias/rainy.png" alt="" class="img-forecast" />
                 <div class="forecast-temp">
-                  <span class="max-temp">18°</span>
-                  <span class="min-temp">22°</span>
+                  <span class="max-temp">${forecastDay.temp.min}</span>
+                  <span class="min-temp">${forecastDay.temp.max}</span>
                 </div>
               </div>
             `;
