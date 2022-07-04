@@ -49,7 +49,8 @@ function displayImage(iconUrl) {
 }
 
 //This function display the forecast COLUMNS
-function displayForecastColumns() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let weatherForecast = document.querySelector("#weather-forecast");
   let forecastColumns = `<div class="row">`;
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
@@ -70,6 +71,17 @@ function displayForecastColumns() {
 
   forecastColumns = forecastColumns + `</div>`;
   weatherForecast.innerHTML = forecastColumns;
+}
+
+// This fonction get the coordinates
+function getForecast(coordinates) {
+  let apiKey = "59ebc73950183d72b027190e832e1b5b";
+  let latitude = coordinates.lat;
+  let longitude = coordinates.lon;
+  let forecastURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  console.log(forecastURL);
+
+  axios.get(forecastURL).then(displayForecast);
 }
 
 //This fonction get the API reponse and dispatches it on HTML
@@ -96,6 +108,8 @@ function displayTemp(response) {
 
   image.setAttribute("src", iconUrl);
   displayImage(iconUrl);
+
+  getForecast(response.data.coord);
 }
 
 // This function receive the value (city) and make the api call
@@ -144,4 +158,3 @@ let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", convertBackToCelsius);
 
 search("Paris");
-displayForecastColumns();
