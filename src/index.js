@@ -23,29 +23,34 @@ function formatDate(timestamp) {
 }
 
 //This function change the weather image from the medias folder
-function displayImage(iconUrl) {
-  if (iconUrl === `http://openweathermap.org/img/wn/01d@2x.png`) {
-    document.getElementById("image").src = "medias/sun.png";
-  } else if (iconUrl === `http://openweathermap.org/img/wn/02d@2x.png`) {
-    document.getElementById("image").src = "medias/cloudy.png";
+function displayImage(icon) {
+  let iconPath = "";
+  if (icon === `01d` || icon === "01n") {
+    iconPath = "medias/sun.png";
+  } else if (icon === `02d` || icon === "02n") {
+    iconPath = "medias/cloudy.png";
   } else if (
-    iconUrl === `http://openweathermap.org/img/wn/03d@2x.png` ||
-    `http://openweathermap.org/img/wn/04d@2x.png`
+    icon === `03d` ||
+    icon === `04d` ||
+    icon === `03n` ||
+    icon === `04n`
   ) {
-    document.getElementById("image").src = "medias/cloud.png";
-  } else if (iconUrl === `http://openweathermap.org/img/wn/09d@2x.png`) {
-    document.getElementById("image").src = "medias/shower.png";
-  } else if (iconUrl === `http://openweathermap.org/img/wn/10d@2x.png`) {
-    document.getElementById("image").src = "medias/rainy.png";
-  } else if (iconUrl === `http://openweathermap.org/img/wn/11d@2x.png`) {
-    document.getElementById("image").src = "medias/storm.png";
-  } else if (iconUrl === `http://openweathermap.org/img/wn/13d@2x.png`) {
-    document.getElementById("image").src = "medias/snowy.png";
-  } else if (iconUrl === `http://openweathermap.org/img/wn/50d@2x.png`) {
-    document.getElementById("image").src = "medias/mist.png";
+    iconPath = "medias/cloud.png";
+  } else if (icon === `09d` || icon === `09n`) {
+    iconPath = "medias/shower.png";
+  } else if (icon === `10d` || icon === `10n`) {
+    iconPath = "medias/rainy.png";
+  } else if (icon === `11d` || icon === `11n`) {
+    iconPath = "medias/storm.png";
+  } else if (icon === `13d` || icon === `13n`) {
+    iconPath = "medias/snowy.png";
+  } else if (icon === `50d` || icon === `50n`) {
+    iconPath = "medias/mist.png";
   } else {
-    document.getElementById("image").src = "medias/clear.png";
+    iconPath = "medias/clear.png";
   }
+
+  return iconPath;
 }
 
 //This function display the forecast COLUMNS
@@ -59,7 +64,9 @@ function displayForecast(response) {
       `
               <div class="col-2 forecast-column">
                 <div class="forecast-date">${forecastDay.dt}</div>
-                <img src="medias/rainy.png" alt="" class="img-forecast" />
+                <img src="${displayImage(
+                  forecastDay.weather[0].icon
+                )}" alt="" class="img-forecast" />
                 <div class="forecast-temp">
                   <span class="max-temp">${forecastDay.temp.min}</span>
                   <span class="min-temp">${forecastDay.temp.max}</span>
@@ -103,10 +110,8 @@ function displayTemp(response) {
   wind.innerHTML = Math.round(response.data.wind.speed);
   let image = document.querySelector("#image");
   let icon = response.data.weather["0"].icon;
-  let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
-  image.setAttribute("src", iconUrl);
-  displayImage(iconUrl);
+  image.setAttribute("src", displayImage(icon));
 
   getForecast(response.data.coord);
 }
