@@ -178,4 +178,4 @@ fahrenheit.addEventListener("click", displayFahrenheitTemperature);
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", convertBackToCelsius);
 
-search("Paris");
+search("Varadero");
