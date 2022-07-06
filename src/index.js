@@ -22,6 +22,7 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+// This function formats the day in the forecast columns
 function formatForecastDate(timestamp) {
   let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -66,11 +67,12 @@ function displayForecast(response) {
   let forecastDays = response.data.daily;
   let weatherForecast = document.querySelector("#weather-forecast");
   let forecastColumns = `<div class="row">`;
-  forecastDays.forEach(function (forecastDay) {
-    forecastColumns =
-      forecastColumns +
-      `
-              <div class="col-1 forecast-column">
+  forecastDays.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastColumns =
+        forecastColumns +
+        `
+              <div class="col-2 forecast-column">
                 <div class="forecast-date">${formatForecastDate(
                   forecastDay.dt
                 )}</div>
@@ -87,6 +89,7 @@ function displayForecast(response) {
                 </div>
               </div>
             `;
+    }
   });
 
   forecastColumns = forecastColumns + `</div>`;
