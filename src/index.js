@@ -22,6 +22,14 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatForecastDate(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+
+  return day;
+}
+
 //This function change the weather image from the medias folder
 function displayImage(icon) {
   let iconPath = "";
@@ -62,8 +70,10 @@ function displayForecast(response) {
     forecastColumns =
       forecastColumns +
       `
-              <div class="col-2 forecast-column">
-                <div class="forecast-date">${forecastDay.dt}</div>
+              <div class="col-1 forecast-column">
+                <div class="forecast-date">${formatForecastDate(
+                  forecastDay.dt
+                )}</div>
                 <img src="${displayImage(
                   forecastDay.weather[0].icon
                 )}" alt="" class="img-forecast" />
@@ -73,7 +83,7 @@ function displayForecast(response) {
                   )}°</span>
                   <span class="min-temp">${Math.round(
                     forecastDay.temp.max
-                  )}°</span>
+                  )}</span>
                 </div>
               </div>
             `;
